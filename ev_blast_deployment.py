@@ -12,7 +12,7 @@ import pandas as pd
 import joblib
 
 model = joblib.load("ev_blast_prediction_model.pkl")
-encoder = joblib.load("label_encoder.pkl")
+encoder = joblib.load("label_encoder(5).pkl")
 
 st.title("EV_blast_deployment app")
 
