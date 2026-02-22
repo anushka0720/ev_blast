@@ -28,7 +28,7 @@ Battery_Maintenance = st.selectbox("Battery_Maintenance", encoder["Battery_Maint
 Battery_Health = st.selectbox("Battery_Health", encoder["Battery_Health"].classes_)
 
 
-df = pd.dataFrame({
+df = pd.DataFrame({
     "Battery_Type" : [battery_Type],
     "Poor_Cell_Design" : [poor_cell_design],
     "External_Abuse" : [external_abuse],
