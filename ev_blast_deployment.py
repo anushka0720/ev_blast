@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 """EV_blast_deployment
 
@@ -11,63 +12,47 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-# Load model and encoder
 model = joblib.load("ev_blast_prediction_model.pkl")
-encoder = joblib.load("label_encoder.pkl")   # rename file properly
+encoder = joblib.load("label_encoder (5).pkl")
 
-st.title("EV Blast Prediction App")
+st.title("EV_blast_deployment app")
 
-# ===== INPUTS =====
 
-battery_type = st.selectbox(
-    "Battery Type",
-    encoder["Battery_Type"].classes_
-)
-
+battery_type = st.selectbox("Battery Type", encoder["Battery_Type"].classes_)
 poor_cell_design = st.selectbox("Poor Cell Design", [0, 1])
 external_abuse = st.selectbox("External Abuse", [0, 1])
 poor_battery_design = st.selectbox("Poor Battery Design", [0, 1])
 short_circuits = st.selectbox("Short Circuits", [0, 1])
-
-temperature = st.number_input(
-    "Temperature",
-    min_value=0,
-    max_value=100
-)
-
+temperature = st.number_input("Temperature", min_value=0, max_value=100)
 overcharge_overdischarge = st.selectbox(
     "Overcharge / Overdischarge",
     encoder["Overcharge_Overdischarge"].classes_
 )
-
 battery_maintenance = st.selectbox(
     "Battery Maintenance",
     encoder["Battery_Maintenance"].classes_
 )
+Battery_Health = st.selectbox("Battery_Health", encoder["Battery_Health"].classes_)
 
-# ===== PREDICT BUTTON =====
+
+df = pd.DataFrame({
+    "Battery_Type" : [battery_type],
+    "Poor_Cell_Design" : [poor_cell_design],
+    "External_Abuse" : [external_abuse],
+    "Poor_Battery_Design" :	[poor_battery_design],
+    "Short_Circuits" : [short_circuits],
+    "Temperature" : [temperature],
+    "Overcharge_Overdischarge" : [overcharge_overdischarge],
+    "Battery_Maintenance" :	[battery_maintenance],
+    "Battery_Health" : [battery_health]
+})
+
 
 if st.button("Predict"):
 
-    df = pd.DataFrame({
-        "Battery_Type": [battery_type],
-        "Poor_Cell_Design": [poor_cell_design],
-        "External_Abuse": [external_abuse],
-        "Poor_Battery_Design": [poor_battery_design],
-        "Short_Circuits": [short_circuits],
-        "Temperature": [temperature],
-        "Overcharge_Overdischarge": [overcharge_overdischarge],
-        "Battery_Maintenance": [battery_maintenance]
-    })
+    prediction = model.predict(input_data)[0]
 
-    # Apply encoder only to categorical columns
-    for col in encoder:
-        if col in df.columns:
-            df[col] = encoder[col].transform(df[col])
-
-    prediction = model.predict(df)[0]
-
-    # If model returns numbers
+    # Convert numeric output to text (if needed)
     health_map = {0: "Good", 1: "Poor", 2: "Critical"}
     prediction = health_map.get(prediction, prediction)
 
@@ -76,4 +61,4 @@ if st.button("Predict"):
     elif prediction == "Poor":
         st.warning("Battery Health is Poor")
     else:
-        st.error("Battery Health is Critical")
+        st.error("Battery Health is Critical"). 
