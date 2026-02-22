@@ -27,7 +27,10 @@ overcharge_overdischarge = st.selectbox(
     "Overcharge / Overdischarge",
     encoder["Overcharge_Overdischarge"].classes_
 )
-Battery_Maintenance = st.selectbox("Battery_Maintenance", encoder["Battery_Maintenance"].classes_)
+battery_maintenance = st.selectbox(
+    "Battery Maintenance",
+    encoder["Battery_Maintenance"].classes_
+)
 Battery_Health = st.selectbox("Battery_Health", encoder["Battery_Health"].classes_)
 
 
