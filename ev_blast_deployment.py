@@ -23,7 +23,10 @@ external_abuse = st.selectbox("External Abuse", [0, 1])
 poor_battery_design = st.selectbox("Poor Battery Design", [0, 1])
 short_circuits = st.selectbox("Short Circuits", [0, 1])
 temperature = st.number_input("Temperature", min_value=0, max_value=100)
-Overcharge_Overdischarge = st.selectbox("Overcharge_Overdischarge", encoder["Overcharge_Overdischarge"].classes_)
+overcharge_overdischarge = st.selectbox(
+    "Overcharge / Overdischarge",
+    encoder["Overcharge_Overdischarge"].classes_
+)
 Battery_Maintenance = st.selectbox("Battery_Maintenance", encoder["Battery_Maintenance"].classes_)
 Battery_Health = st.selectbox("Battery_Health", encoder["Battery_Health"].classes_)
 
