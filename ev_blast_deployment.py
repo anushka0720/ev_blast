@@ -17,7 +17,7 @@ encoder = joblib.load("label_encoder (5).pkl")
 st.title("EV_blast_deployment app")
 
 
-Battery_Type = st.selectbox("Battery_Type", encoder["Battery_Type"].classes_)
+battery_type = st.selectbox("Battery Type", encoder["Battery_Type"].classes_)
 poor_cell_design = st.selectbox("Poor Cell Design", [0, 1])
 External_Abuse = st.selectbox("External_Abuse", encoder["External_Abuse"].classes_)
 Poor_Battery_Design = st.number_input("Poor_Battery_Design", 0, 40)
