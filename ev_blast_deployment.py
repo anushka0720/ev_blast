@@ -35,7 +35,7 @@ df = pd.dataFrame({
     "Poor_Battery_Design" :	[poor_battery_design],
     "Short_Circuits" : [short_circuits],
     "Temperature" : [temperature],
-    "Overcharge_Overdischarge" : [overcharge_overdischarge]
+    "Overcharge_Overdischarge" : [overcharge_overdischarge],
     "Battery_Maintenance" :	[battery_maintenance],
     "Battery_Health" : [battery_health]
 })
