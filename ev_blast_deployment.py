@@ -19,7 +19,7 @@ st.title("EV_blast_deployment app")
 
 battery_type = st.selectbox("Battery Type", encoder["Battery_Type"].classes_)
 poor_cell_design = st.selectbox("Poor Cell Design", [0, 1])
-External_Abuse = st.selectbox("External_Abuse", encoder["External_Abuse"].classes_)
+external_abuse = st.selectbox("External Abuse", [0, 1])
 Poor_Battery_Design = st.number_input("Poor_Battery_Design", 0, 40)
 Short_Circuits = st.number_input("Short_Circuits", 0, 40)
 Temperature = st.number_input("Temperature", 0, 40)
